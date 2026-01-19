@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Decode Results - Admin{% endblock %}
+
+{% block content %}
+<div class="decode-page">
+    <h1>Result Decoder</h1>
+    <p class="subtitle">Enter a result token to view detailed quiz results.</p>
+
+    <form method="POST" class="decode-form">
+        <div class="form-group">
+            <label for="token">Result Token:</label>
+            <textarea id="token" name="token" rows="4"
+                      placeholder="Paste the result token here..."
+                      required>{{ request.form.get('token', '') }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="secret_key">Secret Key:</label>
+            <input type="password" id="secret_key" name="secret_key"
+                   placeholder="Enter the secret key" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Decode Results</button>
+    </form>
+
+    {% if error %}
+    <div class="error-box">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    {% if result %}
+    <div class="results-container">
+        <h2>Quiz Results</h2>
+
+        <div class="result-header">
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Participant:</span>
+                    <span class="value">{{ result.participant }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Quiz:</span>
+                    <span class="value">{{ result.quiz_title }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Score:</span>
+                    <span class="value score">{{ result.score }} / {{ result.total }} ({{ result.percentage }}%)</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Start Time:</span>
+                    <span class="value">{{ result.start_time }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">End Time:</span>
+                    <span class="value">{{ result.end_time }}</span>
+                </div>
+            </div>
+        </div>
+
+        {% if result.cheat_flags %}
+        <div class="cheat-report {% if result.cheat_flags.tab_switches > 0 or result.cheat_flags.fullscreen_exits > 0 or result.cheat_flags.focus_losses > 0 %}has-violations{% endif %}">
+            <h3>Anti-Cheat Report</h3>
+            <ul>
+                <li class="{% if result.cheat_flags.tab_switches > 0 %}violation{% endif %}">
+                    Tab Switches: <strong>{{ result.cheat_flags.tab_switches }}</strong>
+                </li>
+                <li class="{% if result.cheat_flags.fullscreen_exits > 0 %}violation{% endif %}">
+                    Fullscreen Exits: <strong>{{ result.cheat_flags.fullscreen_exits }}</strong>
+                </li>
+                <li class="{% if result.cheat_flags.focus_losses > 0 %}violation{% endif %}">
+                    Focus Losses: <strong>{{ result.cheat_flags.focus_losses }}</strong>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="questions-detail">
+            <h3>Question Details</h3>
+
+            {% for item in result.results %}
+            <div class="question-result {% if item.is_correct %}correct{% else %}incorrect{% endif %}">
+                <div class="question-header">
+                    <span class="question-num">Q{{ loop.index }}</span>
+                    <span class="status-badge {% if item.is_correct %}correct{% else %}incorrect{% endif %}">
+                        {% if item.is_correct %}Correct{% else %}Incorrect{% endif %}
+                    </span>
+                </div>
+
+                <p class="question-text">{{ item.question }}</p>
+
+                <div class="answer-comparison">
+                    <div class="answer-item">
+                        <span class="label">User's Answer:</span>
+                        <span class="value">{{ item.user_answer if item.user_answer else 'No answer' }}</span>
+                    </div>
+                    <div class="answer-item">
+                        <span class="label">Correct Answer:</span>
+                        <span class="value">{{ item.correct_answer }}</span>
+                    </div>
+                </div>
+
+                {% if item.explanation %}
+                <div class="explanation">
+                    <strong>Explanation:</strong> {{ item.explanation }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

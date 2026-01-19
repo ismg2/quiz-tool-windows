@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ quiz_title }} - Start{% endblock %}
+
+{% block content %}
+<div class="start-page">
+    <div class="quiz-header">
+        <h1>{{ quiz_title }}</h1>
+        {% if description %}
+        <p class="description">{{ description }}</p>
+        {% endif %}
+    </div>
+
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <ul>
+            <li>This quiz contains multiple choice questions</li>
+            <li>Some questions may have multiple correct answers</li>
+            <li>Each question has a time limit</li>
+            <li>You cannot go back to previous questions</li>
+            <li>The quiz must be completed in fullscreen mode</li>
+            <li>Switching tabs or windows will be recorded</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <strong>Important:</strong> Once you start, you must complete the quiz in one session.
+        Any attempt to cheat (switching tabs, exiting fullscreen) will be recorded and reported.
+    </div>
+
+    <form action="{{ url_for('start_quiz') }}" method="POST" class="start-form">
+        {% if quiz_id %}
+        <input type="hidden" name="quiz_id" value="{{ quiz_id }}">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="name">Enter your full name:</label>
+            <input type="text" id="name" name="name" required
+                   placeholder="John Doe" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large">
+            Start Quiz
+        </button>
+
+        <a href="{{ url_for('index') }}" class="back-link">&#8592; Choose another quiz</a>
+    </form>
+</div>
+{% endblock %}

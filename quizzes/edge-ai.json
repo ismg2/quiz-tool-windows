@@ -1,0 +1,247 @@
+{
+  "quiz_title": "Edge AI & Applications MCU",
+  "description": "Testez vos connaissances sur l'intelligence artificielle embarquée et ses applications sur microcontrôleurs.",
+  "time_per_question": 45,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "question": "Que signifie Edge AI ?",
+      "options": ["IA dans le cloud", "IA exécutée localement sur l'appareil", "IA pour les jeux", "IA de dernière génération"],
+      "correct": [1],
+      "explanation": "Edge AI désigne l'exécution de l'IA directement sur l'appareil (edge = bord/périphérie) plutôt que dans le cloud."
+    },
+    {
+      "id": 2,
+      "type": "multiple",
+      "question": "Quels sont les avantages de l'Edge AI ? (Plusieurs réponses)",
+      "options": ["Latence réduite", "Fonctionne sans internet", "Meilleure confidentialité", "Puissance de calcul illimitée"],
+      "correct": [0, 1, 2],
+      "explanation": "L'Edge AI offre faible latence, fonctionnement offline et confidentialité. Le cloud offre plus de puissance."
+    },
+    {
+      "id": 3,
+      "type": "single",
+      "question": "Que signifie 'inférence' en IA ?",
+      "options": ["L'entraînement du modèle", "L'utilisation d'un modèle pour faire des prédictions", "La collecte de données", "La correction d'erreurs"],
+      "correct": [1],
+      "explanation": "L'inférence utilise un modèle entraîné pour faire des prédictions sur de nouvelles données."
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "question": "Pourquoi l'entraînement IA ne se fait pas sur MCU ?",
+      "options": ["C'est interdit", "Manque de puissance et mémoire", "Ce n'est pas utile", "Les MCU ne supportent pas l'IA"],
+      "correct": [1],
+      "explanation": "L'entraînement nécessite énormément de calculs. On entraîne sur PC/serveur, puis on déploie sur MCU."
+    },
+    {
+      "id": 5,
+      "type": "single",
+      "question": "Quel outil ST convertit les modèles IA pour STM32 ?",
+      "options": ["STM32CubeIDE", "STM32Cube.AI", "STM32CubeMX", "STM32CubeProgrammer"],
+      "correct": [1],
+      "explanation": "STM32Cube.AI convertit des modèles IA (TensorFlow, ONNX) en code optimisé pour STM32."
+    },
+    {
+      "id": 6,
+      "type": "single",
+      "question": "Qu'est-ce qu'un réseau de neurones ?",
+      "options": ["Un réseau d'entreprise", "Un modèle mathématique inspiré du cerveau", "Un câblage électronique", "Un protocole de communication"],
+      "correct": [1],
+      "explanation": "Un réseau de neurones est un modèle d'IA composé de couches de 'neurones' qui apprennent."
+    },
+    {
+      "id": 7,
+      "type": "single",
+      "question": "Que signifie CNN ?",
+      "options": ["Cable News Network", "Convolutional Neural Network", "Central Node Network", "Computed Number Notation"],
+      "correct": [1],
+      "explanation": "CNN (Convolutional Neural Network) est efficace pour l'analyse d'images."
+    },
+    {
+      "id": 8,
+      "type": "multiple",
+      "question": "Quels sont les cas d'usage de l'Edge AI sur MCU ? (Plusieurs réponses)",
+      "options": ["Détection d'anomalies sonores", "Reconnaissance de mots-clés", "Détection d'objets", "Entraînement de grands modèles"],
+      "correct": [0, 1, 2],
+      "explanation": "Les MCU excellent en détection d'anomalies, reconnaissance vocale, vision. L'entraînement de LLM nécessite des GPU."
+    },
+    {
+      "id": 9,
+      "type": "single",
+      "question": "Qu'est-ce que la 'quantization' d'un modèle ?",
+      "options": ["Augmenter la taille", "Réduire la précision pour diminuer taille et calculs", "Ajouter des couches", "Chiffrer le modèle"],
+      "correct": [1],
+      "explanation": "La quantification convertit les poids (float32 → int8), réduisant taille et accélérant l'exécution."
+    },
+    {
+      "id": 10,
+      "type": "single",
+      "question": "Que permet TensorFlow Lite Micro ?",
+      "options": ["Entraîner sur smartphone", "Exécuter des modèles sur microcontrôleurs", "Créer des sites web", "Gérer des bases de données"],
+      "correct": [1],
+      "explanation": "TensorFlow Lite Micro exécute l'inférence sur MCU avec très peu de mémoire."
+    },
+    {
+      "id": 11,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'wake word' ?",
+      "options": ["Un mot de passe", "Un mot-clé qui active l'assistant", "Un signal d'alarme", "Un protocole de réveil"],
+      "correct": [1],
+      "explanation": "Un wake word ('Hey Siri', 'Alexa') est détecté localement pour réveiller l'appareil."
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "question": "Pourquoi la maintenance prédictive est un bon cas d'usage Edge AI ?",
+      "options": ["C'est moins cher", "Analyse continue des capteurs pour détecter des anomalies", "Plus facile à programmer", "Pas besoin d'IA"],
+      "correct": [1],
+      "explanation": "Le MCU analyse en continu vibrations/sons pour détecter des anomalies avant une panne."
+    },
+    {
+      "id": 13,
+      "type": "single",
+      "question": "Que signifie OTA en IoT ?",
+      "options": ["Over The Air - mise à jour sans fil", "Online Training Algorithm", "Optical Transfer Array", "Output Terminal Access"],
+      "correct": [0],
+      "explanation": "OTA permet de mettre à jour firmware et modèles IA à distance sans accès physique."
+    },
+    {
+      "id": 14,
+      "type": "single",
+      "question": "Quel est l'avantage du traitement IA sur le capteur ?",
+      "options": ["Meilleure qualité d'image", "Réduction massive des données à transmettre", "Coût plus élevé", "Complexité réduite"],
+      "correct": [1],
+      "explanation": "On envoie seulement le résultat ('personne détectée') au lieu de toutes les images."
+    },
+    {
+      "id": 15,
+      "type": "single",
+      "question": "Que signifie NPU ?",
+      "options": ["Network Processing Unit", "Neural Processing Unit", "Numeric Power Unit", "Node Protocol Unit"],
+      "correct": [1],
+      "explanation": "NPU (Neural Processing Unit) est optimisé pour les calculs de réseaux de neurones."
+    },
+    {
+      "id": 16,
+      "type": "single",
+      "question": "Quelle métrique mesure la performance IA ?",
+      "options": ["GHz", "TOPS", "GB", "Watts"],
+      "correct": [1],
+      "explanation": "TOPS (Tera Operations Per Second) mesure les opérations IA par seconde."
+    },
+    {
+      "id": 17,
+      "type": "single",
+      "question": "Qu'est-ce que la détection d'anomalies ?",
+      "options": ["Trouver des bugs", "Identifier des comportements anormaux", "Détecter des virus", "Corriger des erreurs réseau"],
+      "correct": [1],
+      "explanation": "La détection d'anomalies identifie des patterns inhabituels indiquant un problème."
+    },
+    {
+      "id": 18,
+      "type": "multiple",
+      "question": "Quels capteurs alimentent l'Edge AI ? (Plusieurs réponses)",
+      "options": ["Microphone", "Caméra", "Accéléromètre", "Tous ces capteurs"],
+      "correct": [0, 1, 2],
+      "explanation": "L'Edge AI traite données audio, visuelles, de mouvement et autres."
+    },
+    {
+      "id": 19,
+      "type": "single",
+      "question": "Qu'est-ce qu'un modèle 'pré-entraîné' ?",
+      "options": ["Pas encore prêt", "Déjà entraîné, utilisable ou adaptable", "En cours d'entraînement", "Défectueux"],
+      "correct": [1],
+      "explanation": "Un modèle pré-entraîné peut être utilisé directement ou affiné (fine-tuning)."
+    },
+    {
+      "id": 20,
+      "type": "single",
+      "question": "Pourquoi la consommation est critique en Edge AI ?",
+      "options": ["Raisons écologiques", "Beaucoup d'appareils fonctionnent sur batterie", "Pas vraiment critique", "Réduire les coûts de développement"],
+      "correct": [1],
+      "explanation": "Les appareils Edge (IoT, wearables) sur batterie nécessitent une IA efficace."
+    },
+    {
+      "id": 21,
+      "type": "single",
+      "question": "Qu'est-ce que le 'transfer learning' ?",
+      "options": ["Transférer des données", "Réutiliser un modèle pour une nouvelle tâche", "Copier un modèle", "Synchroniser des modèles"],
+      "correct": [1],
+      "explanation": "Le transfer learning adapte un modèle existant à une nouvelle tâche avec moins de données."
+    },
+    {
+      "id": 22,
+      "type": "single",
+      "question": "Quand l'Edge AI est-elle préférable au Cloud ?",
+      "options": ["Besoin de puissance", "Latence, confidentialité ou offline critiques", "Entraîner de grands modèles", "Coût non important"],
+      "correct": [1],
+      "explanation": "L'Edge AI pour réponses instantanées, confidentialité et fonctionnement hors ligne."
+    },
+    {
+      "id": 23,
+      "type": "single",
+      "question": "Qu'est-ce que la 'computer vision' ?",
+      "options": ["Un écran d'ordinateur", "L'IA qui comprend les images", "Un logiciel de retouche", "Une caméra de surveillance"],
+      "correct": [1],
+      "explanation": "La computer vision analyse et comprend le contenu des images et vidéos."
+    },
+    {
+      "id": 24,
+      "type": "single",
+      "question": "Que fait un modèle de 'classification d'images' ?",
+      "options": ["Trie les fichiers", "Attribue une catégorie à une image", "Compresse les images", "Améliore la résolution"],
+      "correct": [1],
+      "explanation": "La classification attribue une catégorie ('chat', 'chien', 'voiture') à une image."
+    },
+    {
+      "id": 25,
+      "type": "single",
+      "question": "Différence entre classification et détection d'objets ?",
+      "options": ["Aucune", "Classification = catégorie globale, détection = localisation", "Détection plus simple", "Classification plus précise"],
+      "correct": [1],
+      "explanation": "Classification: 'image contient un chat'. Détection: 'chat ici (coordonnées)'."
+    },
+    {
+      "id": 26,
+      "type": "single",
+      "question": "Qu'est-ce que ONNX ?",
+      "options": ["Un capteur", "Un format d'échange de modèles IA", "Un langage", "Un type de mémoire"],
+      "correct": [1],
+      "explanation": "ONNX est un format ouvert pour échanger des modèles entre frameworks."
+    },
+    {
+      "id": 27,
+      "type": "single",
+      "question": "Pourquoi le STM32N6 est intéressant pour l'Edge AI ?",
+      "options": ["Le moins cher", "MCU + NPU puissant en basse consommation", "Le plus de mémoire", "Le plus ancien"],
+      "correct": [1],
+      "explanation": "Le STM32N6 combine MCU classique et NPU performant, compact et basse consommation."
+    },
+    {
+      "id": 28,
+      "type": "single",
+      "question": "Qu'est-ce que le 'keyword spotting' ?",
+      "options": ["Recherche internet", "Détection de mots-clés dans l'audio", "Correction orthographique", "Traduction automatique"],
+      "correct": [1],
+      "explanation": "Le keyword spotting détecte des mots-clés spécifiques dans un flux audio continu."
+    },
+    {
+      "id": 29,
+      "type": "single",
+      "question": "Que fait le 'preprocessing' avant l'inférence ?",
+      "options": ["Stocker les données", "Préparer et normaliser les données pour le modèle", "Afficher les résultats", "Compresser le modèle"],
+      "correct": [1],
+      "explanation": "Le preprocessing adapte les données brutes au format attendu par le modèle."
+    },
+    {
+      "id": 30,
+      "type": "single",
+      "question": "Que signifie 'latence' en Edge AI ?",
+      "options": ["Qualité du modèle", "Délai entre entrée et réponse", "Taille du modèle", "Coût de déploiement"],
+      "correct": [1],
+      "explanation": "La latence est le temps entre capture des données et obtention du résultat."
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "quiz_title": "Pipeline Commercial B2B",
+  "description": "Testez vos connaissances sur la gestion du pipeline commercial et les étapes clés de la vente B2B.",
+  "time_per_question": 45,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "question": "Qu'est-ce qu'un pipeline commercial B2B ?",
+      "options": ["Un tuyau physique", "L'ensemble des opportunités de vente en cours", "Un logiciel de comptabilité", "Un type de contrat"],
+      "correct": [1],
+      "explanation": "Le pipeline représente toutes les opportunités de vente, de la prospection au closing."
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "question": "Quelle est la première étape d'un pipeline ?",
+      "options": ["Négociation", "Closing", "Prospection/Génération de leads", "Facturation"],
+      "correct": [2],
+      "explanation": "Le pipeline commence par la prospection : identifier des contacts potentiellement intéressés."
+    },
+    {
+      "id": 3,
+      "type": "single",
+      "question": "Que signifie 'lead' ?",
+      "options": ["Un chef d'équipe", "Un contact commercial potentiel", "Un produit phare", "Un indicateur"],
+      "correct": [1],
+      "explanation": "Un lead est un contact qui a montré un intérêt potentiel pour votre offre."
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "question": "Qu'est-ce que la 'qualification' d'un lead ?",
+      "options": ["Une note scolaire", "Évaluer son potentiel de devenir client", "Le former sur le produit", "Vérifier son identité"],
+      "correct": [1],
+      "explanation": "Qualifier = évaluer si le lead a budget, besoin, autorité et timing (BANT)."
+    },
+    {
+      "id": 5,
+      "type": "single",
+      "question": "Que signifie BANT ?",
+      "options": ["Budget, Authority, Need, Timeline", "Business, Account, Network, Target", "Buy, Acquire, Negotiate, Transfer", "Brand, Audience, Niche, Trend"],
+      "correct": [0],
+      "explanation": "BANT = Budget, Authority (décideur), Need (besoin), Timeline (timing d'achat)."
+    },
+    {
+      "id": 6,
+      "type": "single",
+      "question": "Qu'est-ce qu'une 'opportunité' dans le pipeline ?",
+      "options": ["N'importe quel contact", "Un lead qualifié avec chance réelle de vente", "Une offre promo", "Un nouveau produit"],
+      "correct": [1],
+      "explanation": "Une opportunité est un lead qualifié représentant une vente potentielle concrète."
+    },
+    {
+      "id": 7,
+      "type": "multiple",
+      "question": "Quelles sont les étapes classiques d'un pipeline ? (Plusieurs réponses)",
+      "options": ["Prospection", "Qualification", "Proposition/Négociation", "Closing"],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Pipeline typique : Prospection → Qualification → Proposition → Négociation → Closing."
+    },
+    {
+      "id": 8,
+      "type": "single",
+      "question": "Que signifie 'closing' ?",
+      "options": ["Fermer l'entreprise", "Conclure la vente (signature)", "Clôturer le pipeline", "Terminer une réunion"],
+      "correct": [1],
+      "explanation": "Le closing est la conclusion de la vente : signature du contrat ou commande."
+    },
+    {
+      "id": 9,
+      "type": "single",
+      "question": "Qu'est-ce qu'un CRM ?",
+      "options": ["Un processeur", "Customer Relationship Management", "Un contrat", "Une certification"],
+      "correct": [1],
+      "explanation": "CRM = outil pour gérer contacts, opportunités et historique client."
+    },
+    {
+      "id": 10,
+      "type": "single",
+      "question": "Pourquoi suivre le pipeline régulièrement ?",
+      "options": ["Impressionner la direction", "Anticiper le CA et identifier les priorités", "Obligation légale", "Occuper les commerciaux"],
+      "correct": [1],
+      "explanation": "Le suivi permet de prévoir le CA, identifier les blocages et prioriser les actions."
+    },
+    {
+      "id": 11,
+      "type": "single",
+      "question": "Que signifie 'taux de conversion' ?",
+      "options": ["Taux de change", "Pourcentage de leads qui deviennent clients", "Taux d'intérêt", "Vitesse de traitement"],
+      "correct": [1],
+      "explanation": "Taux de conversion = opportunités gagnées / total. Ex: 10 clients sur 100 leads = 10%."
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "question": "Qu'est-ce que la 'valeur du pipeline' ?",
+      "options": ["Prix du CRM", "Somme des montants des opportunités en cours", "Salaire des commerciaux", "Budget marketing"],
+      "correct": [1],
+      "explanation": "Valeur pipeline = somme des montants estimés de toutes les opportunités."
+    },
+    {
+      "id": 13,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'cycle de vente' ?",
+      "options": ["Une bicyclette", "Durée moyenne du premier contact à la signature", "Une technique de vente", "Un type de contrat"],
+      "correct": [1],
+      "explanation": "Le cycle de vente est le temps moyen pour convertir un lead en client."
+    },
+    {
+      "id": 14,
+      "type": "single",
+      "question": "En B2B, le cycle de vente est généralement :",
+      "options": ["Plus court qu'en B2C", "Plus long car plusieurs décideurs", "Identique au B2C", "Inexistant"],
+      "correct": [1],
+      "explanation": "En B2B, les cycles sont plus longs : plusieurs décideurs, gros budgets, processus d'approbation."
+    },
+    {
+      "id": 15,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'forecast' commercial ?",
+      "options": ["Prévision météo", "Prévision du CA attendu", "Rapport passé", "Plan marketing"],
+      "correct": [1],
+      "explanation": "Le forecast prévoit les ventes basées sur les opportunités et leur probabilité."
+    },
+    {
+      "id": 16,
+      "type": "single",
+      "question": "Que signifie une probabilité de closing de 50% ?",
+      "options": ["Client a payé la moitié", "Une chance sur deux de gagner", "Négociation à mi-chemin", "50% de réduction"],
+      "correct": [1],
+      "explanation": "50% = autant de chances de gagner que de perdre cette affaire."
+    },
+    {
+      "id": 17,
+      "type": "single",
+      "question": "Qu'est-ce que le 'weighted pipeline' ?",
+      "options": ["Pipeline lourd", "Valeur × probabilité", "Pipeline prioritaire", "Gros clients"],
+      "correct": [1],
+      "explanation": "Pipeline pondéré = Σ (valeur × probabilité). Ex: 100k€ à 50% = 50k€ pondérés."
+    },
+    {
+      "id": 18,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'decision maker' ?",
+      "options": ["Un logiciel", "Personne qui peut valider l'achat", "Consultant externe", "Directeur commercial"],
+      "correct": [1],
+      "explanation": "Le decision maker a l'autorité finale pour approuver l'achat et signer."
+    },
+    {
+      "id": 19,
+      "type": "multiple",
+      "question": "Quels sont les KPI d'un pipeline ? (Plusieurs réponses)",
+      "options": ["Nombre d'opportunités", "Valeur totale", "Taux de conversion", "Âge moyen des opportunités"],
+      "correct": [0, 1, 2, 3],
+      "explanation": "Tous ces indicateurs (volume, valeur, conversion, vélocité) sont essentiels."
+    },
+    {
+      "id": 20,
+      "type": "single",
+      "question": "Que signifie 'nurturing' ?",
+      "options": ["Nourrir les employés", "Entretenir la relation avec un lead pas prêt", "Négocier les prix", "Livrer le produit"],
+      "correct": [1],
+      "explanation": "Le nurturing maintient le contact avec des leads pas encore prêts à acheter."
+    },
+    {
+      "id": 21,
+      "type": "single",
+      "question": "Pourquoi un pipeline doit avoir des opportunités à toutes les étapes ?",
+      "options": ["Faire joli", "Assurer un flux continu de revenus", "Obligation légale", "Occuper les commerciaux"],
+      "correct": [1],
+      "explanation": "Un pipeline équilibré garantit un flux régulier de closings."
+    },
+    {
+      "id": 22,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'deal perdu' ?",
+      "options": ["Contrat égaré", "Opportunité qui n'a pas abouti", "Client mécontent", "Erreur de facturation"],
+      "correct": [1],
+      "explanation": "Deal perdu = opportunité non convertie (concurrent, abandon, pas de budget)."
+    },
+    {
+      "id": 23,
+      "type": "single",
+      "question": "Pourquoi analyser les deals perdus ?",
+      "options": ["Punir les commerciaux", "Comprendre et améliorer le processus", "Inutile", "Pour les statistiques"],
+      "correct": [1],
+      "explanation": "Analyser les pertes permet d'améliorer l'offre et le processus de vente."
+    },
+    {
+      "id": 24,
+      "type": "single",
+      "question": "Qu'est-ce que l'upselling ?",
+      "options": ["Vendre moins cher", "Vendre une version supérieure", "Vendre à l'étranger", "Vendre en gros"],
+      "correct": [1],
+      "explanation": "Upselling = proposer une version plus haut de gamme ou des options."
+    },
+    {
+      "id": 25,
+      "type": "single",
+      "question": "Qu'est-ce que le cross-selling ?",
+      "options": ["Vendre à la concurrence", "Vendre des produits complémentaires", "Vendre en ligne", "Échanger des clients"],
+      "correct": [1],
+      "explanation": "Cross-selling = proposer des produits complémentaires au client."
+    },
+    {
+      "id": 26,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'account manager' ?",
+      "options": ["Comptable", "Commercial pour clients existants", "Gestionnaire réseaux sociaux", "DG"],
+      "correct": [1],
+      "explanation": "L'account manager gère la relation avec les clients existants."
+    },
+    {
+      "id": 27,
+      "type": "single",
+      "question": "Différence entre 'hunter' et 'farmer' ?",
+      "options": ["Jour vs nuit", "Nouveaux clients vs clients existants", "Senior vs junior", "Aucune"],
+      "correct": [1],
+      "explanation": "Hunter acquiert de nouveaux clients. Farmer développe les clients existants."
+    },
+    {
+      "id": 28,
+      "type": "single",
+      "question": "Qu'est-ce qu'un 'touchpoint' ?",
+      "options": ["Écran tactile", "Point de contact client-entreprise", "Technique de négociation", "Indicateur"],
+      "correct": [1],
+      "explanation": "Touchpoint = chaque interaction (email, appel, réunion, site web)."
+    },
+    {
+      "id": 29,
+      "type": "single",
+      "question": "Que signifie ROI en vente B2B ?",
+      "options": ["Region Of Interest", "Return On Investment", "Rate Of Inflation", "Record Of Information"],
+      "correct": [1],
+      "explanation": "ROI = gain par rapport à l'investissement. Essentiel pour justifier l'achat en B2B."
+    },
+    {
+      "id": 30,
+      "type": "single",
+      "question": "Qu'est-ce qu'une 'objection' en vente ?",
+      "options": ["Refus définitif", "Préoccupation du client à traiter", "Erreur dans le devis", "Plainte officielle"],
+      "correct": [1],
+      "explanation": "Une objection est une préoccupation qui, bien traitée, peut devenir une opportunité."
+    }
+  ]
+}

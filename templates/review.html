@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Review - Question {{ question_num }} of {{ total }}{% endblock %}
+
+{% block content %}
+<div class="review-page">
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: {{ (question_num / total) * 100 }}%"></div>
+        </div>
+        <span class="progress-text">Review: Question {{ question_num }} of {{ total }}</span>
+    </div>
+
+    <!-- Score summary -->
+    <div class="score-banner {% if item.is_correct %}correct{% else %}incorrect{% endif %}">
+        {% if item.is_correct %}
+        <span class="icon">&#10003;</span> Correct
+        {% else %}
+        <span class="icon">&#10007;</span> Incorrect
+        {% endif %}
+    </div>
+
+    <!-- Question -->
+    <div class="review-question">
+        <h2>{{ item.question }}</h2>
+    </div>
+
+    <!-- Answers display -->
+    <div class="answers-review">
+        {% for option in options %}
+        <div class="answer-option
+            {% if loop.index0 in item.correct_answer %}correct-answer{% endif %}
+            {% if loop.index0 in item.user_answer and loop.index0 not in item.correct_answer %}wrong-answer{% endif %}
+            {% if loop.index0 in item.user_answer and loop.index0 in item.correct_answer %}user-correct{% endif %}">
+            <span class="option-marker">
+                {% if loop.index0 in item.correct_answer %}
+                    <span class="correct-mark">&#10003;</span>
+                {% endif %}
+                {% if loop.index0 in item.user_answer and loop.index0 not in item.correct_answer %}
+                    <span class="wrong-mark">&#10007;</span>
+                {% endif %}
+            </span>
+            <span class="option-text">{{ option }}</span>
+            {% if loop.index0 in item.user_answer %}
+                <span class="your-answer-tag">Your answer</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Explanation -->
+    {% if item.explanation %}
+    <div class="explanation-box">
+        <strong>Explanation:</strong> {{ item.explanation }}
+    </div>
+    {% endif %}
+
+    <!-- Navigation -->
+    <div class="review-nav">
+        {% if question_num < total %}
+        <a href="{{ url_for('review', q=question_num + 1) }}" class="btn btn-primary btn-large">
+            Next Question
+        </a>
+        {% else %}
+        <a href="{{ url_for('result') }}" class="btn btn-primary btn-large">
+            See Result Code
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- Question dots -->
+    <div class="question-dots">
+        {% for i in range(1, total + 1) %}
+        <a href="{{ url_for('review', q=i) }}"
+           class="dot {% if i == question_num %}active{% endif %} {% if results[i-1].is_correct %}correct{% else %}incorrect{% endif %}">
+            {{ i }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

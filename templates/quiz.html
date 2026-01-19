@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Question {{ question_num }} of {{ total_questions }}{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Prevent text selection during quiz */
+    body.quiz-active {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quiz-page" id="quiz-container">
+    <!-- Fullscreen overlay warning -->
+    <div id="fullscreen-warning" class="overlay hidden">
+        <div class="overlay-content">
+            <h2>Fullscreen Required</h2>
+            <p>This quiz must be taken in fullscreen mode.</p>
+            <button onclick="enterFullscreen()" class="btn btn-primary">
+                Enter Fullscreen
+            </button>
+        </div>
+    </div>
+
+    <!-- Tab switch warning -->
+    <div id="tab-warning" class="overlay hidden">
+        <div class="overlay-content warning">
+            <h2>Warning!</h2>
+            <p>Tab switching has been detected and recorded.</p>
+            <p class="cheat-count">Violations: <span id="violation-count">0</span></p>
+            <button onclick="dismissWarning()" class="btn btn-warning">
+                Continue Quiz
+            </button>
+        </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: {{ (question_num / total_questions) * 100 }}%"></div>
+        </div>
+        <span class="progress-text" id="progress-text">Question {{ question_num }} of {{ total_questions }}</span>
+    </div>
+
+    <!-- Timer -->
+    {% if time_per_question > 0 %}
+    <div class="timer-container">
+        <div class="timer" id="timer">
+            <span id="time-remaining">{{ time_per_question }}</span>s
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Question -->
+    <div class="question-container">
+        <div class="question-type" id="question-type-container">
+            {% if question.type == 'multiple' %}
+            <span class="badge badge-info" id="question-type-badge">Select all that apply</span>
+            {% else %}
+            <span class="badge" id="question-type-badge">Select one answer</span>
+            {% endif %}
+        </div>
+
+        <h2 class="question-text" id="question-text">{{ question.question }}</h2>
+
+        <div id="options-container" class="options-container">
+            {% for option in question.options %}
+            <label class="option {% if existing_answer and loop.index0 in existing_answer %}selected{% endif %}" data-index="{{ loop.index0 }}">
+                <input type="{{ 'checkbox' if question.type == 'multiple' else 'radio' }}"
+                       name="answer"
+                       value="{{ loop.index0 }}"
+                       {% if existing_answer and loop.index0 in existing_answer %}checked{% endif %}>
+                <span class="option-text">{{ option }}</span>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <button id="next-btn" class="btn btn-primary btn-large" onclick="submitAndNext()">
+            {% if question_num == total_questions %}
+            Finish Quiz
+            {% else %}
+            Next Question
+            {% endif %}
+        </button>
+    </div>
+</div>
+
+<script>
+    const TIME_LIMIT = {{ time_per_question }};
+    let currentQuestionNum = {{ question_num }};
+    let totalQuestions = {{ total_questions }};
+    let isLastQuestion = {{ 'true' if question_num == total_questions else 'false' }};
+    let questionType = '{{ question.type }}';
+</script>
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

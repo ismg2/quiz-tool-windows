@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Quiz{% endblock %}
+
+{% block content %}
+<div class="submit-page">
+    <div class="submit-card">
+        <h1>Ready to Submit?</h1>
+
+        <div class="summary">
+            <p>You have answered <strong>{{ answered }}</strong> out of <strong>{{ total }}</strong> questions.</p>
+
+            {% if answered < total %}
+            <div class="warning-box">
+                <strong>Warning:</strong> You have {{ total - answered }} unanswered question(s).
+                Unanswered questions will be marked as incorrect.
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="actions">
+            <form action="{{ url_for('submit') }}" method="POST">
+                <button type="submit" class="btn btn-primary btn-large">
+                    Submit Quiz
+                </button>
+            </form>
+        </div>
+
+        <p class="note">Once submitted, you cannot change your answers.</p>
+    </div>
+</div>
+{% endblock %}

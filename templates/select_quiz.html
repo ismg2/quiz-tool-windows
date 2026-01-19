@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Tool - Select Quiz{% endblock %}
+
+{% block content %}
+<div class="select-page">
+    <div class="quiz-header">
+        <h1>Quiz Tool</h1>
+        <p class="description">Select a quiz to begin</p>
+    </div>
+
+    {% if quizzes %}
+    <div class="quiz-list">
+        {% for quiz in quizzes %}
+        <a href="{{ url_for('select_quiz', quiz_id=quiz.id) }}" class="quiz-card">
+            <div class="quiz-card-content">
+                <h2>{{ quiz.title }}</h2>
+                {% if quiz.description %}
+                <p class="quiz-description">{{ quiz.description }}</p>
+                {% endif %}
+                <div class="quiz-meta">
+                    <span class="question-count">{{ quiz.question_count }} questions</span>
+                </div>
+            </div>
+            <div class="quiz-card-arrow">
+                <span>&#8594;</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-quizzes">
+        <p>No quizzes available.</p>
+        <p class="hint">Add JSON quiz files to the <code>quizzes/</code> folder.</p>
+    </div>
+    {% endif %}
+
+    <div class="admin-link">
+        <a href="{{ url_for('decode') }}">Admin: Decode Results</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Completed{% endblock %}
+
+{% block content %}
+<div class="result-page">
+    <div class="result-card">
+        <div class="checkmark">
+            <svg viewBox="0 0 52 52">
+                <circle cx="26" cy="26" r="25" fill="none" stroke="#4CAF50" stroke-width="2"/>
+                <path fill="none" stroke="#4CAF50" stroke-width="3" d="M14 27l7 7 16-16"/>
+            </svg>
+        </div>
+
+        <h1>Quiz Completed!</h1>
+
+        <p class="participant">Thank you, <strong>{{ participant }}</strong>!</p>
+
+        <div class="score-summary">
+            <p>You answered <strong>{{ score }}</strong> out of <strong>{{ total }}</strong> questions correctly.</p>
+        </div>
+
+        <div class="token-section">
+            <h2>Your Result Code</h2>
+            <p class="token-instructions">
+                Please copy the code below and send it to your evaluator.
+                This code contains your encrypted results.
+            </p>
+
+            <div class="token-container">
+                <textarea id="result-token" readonly onclick="this.select()">{{ token }}</textarea>
+                <button class="btn btn-secondary" onclick="copyToken()">
+                    Copy Code
+                </button>
+            </div>
+
+            <p id="copy-feedback" class="copy-feedback hidden">Copied to clipboard!</p>
+        </div>
+
+        <div class="final-note">
+            <p>You may now close this window.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToken() {
+    const textarea = document.getElementById('result-token');
+    textarea.select();
+    document.execCommand('copy');
+
+    const feedback = document.getElementById('copy-feedback');
+    feedback.classList.remove('hidden');
+    setTimeout(() => feedback.classList.add('hidden'), 2000);
+}
+</script>
+{% endblock %}

@@ -1,0 +1,247 @@
+{
+  "quiz_title": "Microcontrôleurs & STM32",
+  "description": "Testez vos connaissances sur les microcontrôleurs, l'architecture STM32 et le STM32N6.",
+  "time_per_question": 45,
+  "questions": [
+    {
+      "id": 1,
+      "type": "single",
+      "question": "Que signifie l'acronyme MCU ?",
+      "options": ["Memory Control Unit", "Microcontroller Unit", "Main Computing Unit", "Micro Circuit Unit"],
+      "correct": [1],
+      "explanation": "MCU signifie Microcontroller Unit, un circuit intégré combinant processeur, mémoire et périphériques."
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "question": "Quelle est la principale différence entre un MCU et un MPU ?",
+      "options": ["Le MCU est plus rapide", "Le MCU intègre mémoire et périphériques sur la même puce", "Le MPU consomme moins d'énergie", "Il n'y a pas de différence"],
+      "correct": [1],
+      "explanation": "Un MCU intègre CPU, mémoire et périphériques sur une seule puce, tandis qu'un MPU nécessite des composants externes."
+    },
+    {
+      "id": 3,
+      "type": "single",
+      "question": "Quel type de cœur processeur est utilisé dans les STM32 ?",
+      "options": ["Intel x86", "ARM Cortex", "RISC-V", "MIPS"],
+      "correct": [1],
+      "explanation": "Les STM32 utilisent des cœurs ARM Cortex (M0, M3, M4, M7, M33, M55 selon les familles)."
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "question": "Que signifie GPIO ?",
+      "options": ["General Purpose Input/Output", "Graphic Processing Input/Output", "Global Peripheral Interface Option", "Ground Power Input/Output"],
+      "correct": [0],
+      "explanation": "GPIO (General Purpose Input/Output) désigne les broches configurables en entrée ou sortie."
+    },
+    {
+      "id": 5,
+      "type": "single",
+      "question": "Quelle est la particularité majeure du STM32N6 ?",
+      "options": ["Il a plus de mémoire Flash", "Il intègre un NPU dédié à l'IA", "Il fonctionne à plus haute fréquence", "Il a plus de ports GPIO"],
+      "correct": [1],
+      "explanation": "Le STM32N6 est le premier STM32 à intégrer un NPU (Neural Processing Unit) pour exécuter des modèles d'IA."
+    },
+    {
+      "id": 6,
+      "type": "single",
+      "question": "À quoi sert un ADC dans un MCU ?",
+      "options": ["Amplifier les signaux", "Convertir un signal analogique en numérique", "Contrôler la vitesse du processeur", "Gérer la mémoire"],
+      "correct": [1],
+      "explanation": "ADC (Analog-to-Digital Converter) convertit des signaux analogiques en valeurs numériques."
+    },
+    {
+      "id": 7,
+      "type": "single",
+      "question": "Que signifie 'Low Power' pour les MCU STM32 ?",
+      "options": ["Faible puissance de calcul", "Faible consommation d'énergie", "Faible tension d'alimentation", "Faible coût"],
+      "correct": [1],
+      "explanation": "Low Power désigne les modes à faible consommation, essentiels pour les applications sur batterie."
+    },
+    {
+      "id": 8,
+      "type": "multiple",
+      "question": "Quels sont les domaines d'application des STM32 ? (Plusieurs réponses)",
+      "options": ["Électroménager", "Automobile", "Dispositifs médicaux", "Serveurs data center"],
+      "correct": [0, 1, 2],
+      "explanation": "Les STM32 sont utilisés dans l'électroménager, l'automobile, le médical. Les serveurs utilisent des processeurs haute performance."
+    },
+    {
+      "id": 9,
+      "type": "single",
+      "question": "Quelle est la fonction d'un timer dans un MCU ?",
+      "options": ["Afficher l'heure", "Mesurer des durées et générer des signaux périodiques", "Gérer la température", "Stocker des données"],
+      "correct": [1],
+      "explanation": "Les timers mesurent des durées, génèrent des PWM et déclenchent des interruptions périodiques."
+    },
+    {
+      "id": 10,
+      "type": "single",
+      "question": "Que permet le protocole I2C ?",
+      "options": ["Connexion Internet", "Communication série avec 2 fils", "Programmation du MCU", "Alimentation électrique"],
+      "correct": [1],
+      "explanation": "I2C est un bus série utilisant 2 fils (SDA, SCL) pour connecter plusieurs périphériques."
+    },
+    {
+      "id": 11,
+      "type": "single",
+      "question": "Quel outil logiciel ST fournit-il pour développer sur STM32 ?",
+      "options": ["Visual Studio", "STM32CubeIDE", "Arduino IDE", "Eclipse standard"],
+      "correct": [1],
+      "explanation": "STM32CubeIDE est l'environnement de développement intégré gratuit de ST."
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "question": "Que signifie 'Flash' pour un MCU ?",
+      "options": ["Un éclairage LED", "La mémoire non-volatile du programme", "La vitesse du processeur", "Un mode de communication"],
+      "correct": [1],
+      "explanation": "La mémoire Flash stocke le programme de façon permanente, même sans alimentation."
+    },
+    {
+      "id": 13,
+      "type": "single",
+      "question": "Quelle famille STM32 est optimisée pour l'ultra basse consommation ?",
+      "options": ["STM32F4", "STM32H7", "STM32L et STM32U", "STM32G0"],
+      "correct": [2],
+      "explanation": "Les STM32L (Low-power) et STM32U (Ultra-low-power) maximisent l'autonomie sur batterie."
+    },
+    {
+      "id": 14,
+      "type": "single",
+      "question": "Que signifie SPI ?",
+      "options": ["Serial Peripheral Interface", "System Programming Interface", "Signal Processing Input", "Secure Protocol Integration"],
+      "correct": [0],
+      "explanation": "SPI est un bus de communication série rapide pour écrans, mémoires, capteurs."
+    },
+    {
+      "id": 15,
+      "type": "single",
+      "question": "Quel est l'avantage d'un NPU intégré comme dans le STM32N6 ?",
+      "options": ["Réduire le coût", "Exécuter l'IA localement sans cloud", "Augmenter la mémoire", "Simplifier la programmation"],
+      "correct": [1],
+      "explanation": "Le NPU permet l'inférence IA sur le MCU : plus rapide, plus privé, fonctionne hors ligne."
+    },
+    {
+      "id": 16,
+      "type": "single",
+      "question": "Que signifie 'firmware' ?",
+      "options": ["Le boîtier du MCU", "Le logiciel embarqué", "La documentation", "Le câble de programmation"],
+      "correct": [1],
+      "explanation": "Le firmware est le logiciel stocké dans la Flash qui contrôle le MCU."
+    },
+    {
+      "id": 17,
+      "type": "single",
+      "question": "Quelle est la tension d'alimentation typique d'un STM32 ?",
+      "options": ["12V", "5V uniquement", "1.8V à 3.6V", "220V"],
+      "correct": [2],
+      "explanation": "La plupart des STM32 fonctionnent entre 1.8V et 3.6V, avec 3.3V comme tension typique."
+    },
+    {
+      "id": 18,
+      "type": "single",
+      "question": "À quoi sert un watchdog ?",
+      "options": ["Surveiller la température", "Redémarrer le système en cas de blocage", "Protéger contre les virus", "Mesurer la batterie"],
+      "correct": [1],
+      "explanation": "Le watchdog redémarre automatiquement le MCU si le programme se bloque."
+    },
+    {
+      "id": 19,
+      "type": "single",
+      "question": "Que permet le DMA ?",
+      "options": ["Afficher des graphiques", "Transférer des données sans le CPU", "Déboguer le programme", "Mesurer des distances"],
+      "correct": [1],
+      "explanation": "DMA (Direct Memory Access) transfère des données sans intervention du CPU."
+    },
+    {
+      "id": 20,
+      "type": "multiple",
+      "question": "Quelles interfaces sont disponibles sur STM32 ? (Plusieurs réponses)",
+      "options": ["UART/USART", "I2C", "SPI", "Thunderbolt"],
+      "correct": [0, 1, 2],
+      "explanation": "UART, I2C et SPI sont standard sur STM32. Thunderbolt est une interface PC haut débit."
+    },
+    {
+      "id": 21,
+      "type": "single",
+      "question": "Quel est le rôle de STM32CubeMX ?",
+      "options": ["Compiler le code", "Configurer graphiquement le MCU", "Déboguer", "Simuler le circuit"],
+      "correct": [1],
+      "explanation": "STM32CubeMX configure graphiquement les pins, horloges et génère le code d'initialisation."
+    },
+    {
+      "id": 22,
+      "type": "single",
+      "question": "Que signifie HAL ?",
+      "options": ["High Availability Layer", "Hardware Abstraction Layer", "Host Application Library", "Hybrid Algorithm Logic"],
+      "correct": [1],
+      "explanation": "HAL (Hardware Abstraction Layer) simplifie la programmation en masquant les détails hardware."
+    },
+    {
+      "id": 23,
+      "type": "single",
+      "question": "Quelle performance IA le STM32N6 peut-il atteindre ?",
+      "options": ["Quelques MOPS", "Quelques GOPS", "Plusieurs dizaines de TOPS", "Comme un GPU gaming"],
+      "correct": [2],
+      "explanation": "Le NPU du STM32N6 atteint plusieurs dizaines de TOPS pour la vision et l'audio en temps réel."
+    },
+    {
+      "id": 24,
+      "type": "single",
+      "question": "Que signifie PWM et à quoi ça sert ?",
+      "options": ["Power Wireless Module", "Pulse Width Modulation - contrôler la puissance", "Program Write Memory", "Peripheral Watch Mode"],
+      "correct": [1],
+      "explanation": "PWM contrôle la puissance moyenne via le rapport cyclique. Utilisé pour LEDs, moteurs."
+    },
+    {
+      "id": 25,
+      "type": "single",
+      "question": "Pourquoi le STM32N6 est-il adapté à la vision ?",
+      "options": ["Il a un écran intégré", "NPU + interfaces caméra pour traitement temps réel", "Il est moins cher", "Plus de GPIO"],
+      "correct": [1],
+      "explanation": "Le STM32N6 combine NPU puissant et interfaces caméra pour l'analyse d'images en temps réel."
+    },
+    {
+      "id": 26,
+      "type": "single",
+      "question": "Qu'est-ce qu'une interruption ?",
+      "options": ["Pause d'alimentation", "Signal qui stoppe le programme pour un événement urgent", "Erreur de programmation", "Mode basse consommation"],
+      "correct": [1],
+      "explanation": "Une interruption suspend le programme principal pour traiter un événement urgent."
+    },
+    {
+      "id": 27,
+      "type": "single",
+      "question": "Quelle différence entre RAM et Flash ?",
+      "options": ["Aucune", "RAM volatile, Flash non-volatile", "Flash plus rapide", "RAM stocke le programme"],
+      "correct": [1],
+      "explanation": "La RAM perd les données sans alimentation. La Flash conserve le programme."
+    },
+    {
+      "id": 28,
+      "type": "single",
+      "question": "Que signifie RTOS ?",
+      "options": ["Real-Time Operating System", "Remote Terminal Operating System", "Rapid Transfer Output Signal", "Runtime Test Operating Sequence"],
+      "correct": [0],
+      "explanation": "RTOS (Real-Time Operating System) gère plusieurs tâches avec garanties de timing."
+    },
+    {
+      "id": 29,
+      "type": "single",
+      "question": "Quel RTOS est populaire avec STM32 ?",
+      "options": ["Windows Embedded", "FreeRTOS", "Linux", "Android"],
+      "correct": [1],
+      "explanation": "FreeRTOS est gratuit et intégré dans l'écosystème STM32Cube."
+    },
+    {
+      "id": 30,
+      "type": "single",
+      "question": "Que permet le mode Debug ?",
+      "options": ["Accélérer le programme", "Exécuter pas à pas et inspecter les variables", "Réduire la consommation", "Communiquer via Bluetooth"],
+      "correct": [1],
+      "explanation": "Le Debug permet d'exécuter pas à pas, mettre des points d'arrêt et trouver les bugs."
+    }
+  ]
+}
