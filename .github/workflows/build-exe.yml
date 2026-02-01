@@ -28,28 +28,31 @@ jobs:
           pyinstaller --clean --noconfirm quiz_tool.spec
 
       - name: Create distribution package
+        shell: pwsh
         run: |
-          mkdir QuizTool-Distribution
-          copy dist\QuizTool.exe QuizTool-Distribution\
-          xcopy /E /I quizzes QuizTool-Distribution\quizzes
+          New-Item -ItemType Directory -Path QuizTool-Distribution -Force
+          Copy-Item dist\QuizTool.exe -Destination QuizTool-Distribution\
+          Copy-Item -Recurse quizzes -Destination QuizTool-Distribution\quizzes
 
-          @echo off > QuizTool-Distribution\LISEZ-MOI.txt
-          echo ============================================== >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo    Quiz Tool - Application Standalone >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo ============================================== >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo. >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo UTILISATION: >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo   Double-cliquez sur QuizTool.exe >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo   Le navigateur s'ouvre automatiquement >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo. >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo AJOUTER DES QUIZ: >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo   Placez vos fichiers .json dans le dossier quizzes/ >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo. >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo ARRETER: >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo   Fermez la fenetre noire (console) >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo. >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo Aucune installation requise! >> QuizTool-Distribution\LISEZ-MOI.txt
-          echo ============================================== >> QuizTool-Distribution\LISEZ-MOI.txt
+          $readme = @"
+          ==============================================
+             Quiz Tool - Application Standalone
+          ==============================================
+
+          UTILISATION:
+            Double-cliquez sur QuizTool.exe
+            Le navigateur s'ouvre automatiquement
+
+          AJOUTER DES QUIZ:
+            Placez vos fichiers .json dans le dossier quizzes/
+
+          ARRETER:
+            Fermez la fenetre noire (console)
+
+          Aucune installation requise!
+          ==============================================
+          "@
+          $readme | Out-File -FilePath QuizTool-Distribution\LISEZ-MOI.txt -Encoding UTF8
 
       - name: Create ZIP archive
         run: |
