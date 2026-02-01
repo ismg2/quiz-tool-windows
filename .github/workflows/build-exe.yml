@@ -62,15 +62,6 @@ jobs:
       - name: Upload distribution ZIP
         uses: actions/upload-artifact@v4
         with:
-          name: QuizTool-Windows-Distribution
+          name: QuizTool-Windows
           path: QuizTool-Windows.zip
-          retention-days: 90
-
-      - name: Upload individual files (backup)
-        uses: actions/upload-artifact@v4
-        with:
-          name: QuizTool-Windows-Files
-          path: |
-            dist/QuizTool.exe
-            quizzes/
           retention-days: 90
