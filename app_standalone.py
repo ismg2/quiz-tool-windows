@@ -10,6 +10,7 @@ import base64
 import hashlib
 import sys
 import os
+import uuid
 import webbrowser
 import threading
 from datetime import datetime
@@ -101,6 +102,33 @@ def decrypt_result(token):
     decrypted = f.decrypt(token.encode())
     return json.loads(decrypted.decode())
 
+# Server-side storage for quiz data that exceeds cookie size limits (~4KB).
+# Flask's default cookie-based sessions can't hold full quiz question sets.
+_server_sessions = {}
+
+def _get_server_data():
+    """Get server-side data for the current session."""
+    sid = session.get('_sid')
+    if sid and sid in _server_sessions:
+        return _server_sessions[sid]
+    return {}
+
+def _set_server_data(key, value):
+    """Store data server-side for the current session."""
+    sid = session.get('_sid')
+    if not sid:
+        sid = str(uuid.uuid4())
+        session['_sid'] = sid
+    if sid not in _server_sessions:
+        _server_sessions[sid] = {}
+    _server_sessions[sid][key] = value
+
+def _clear_server_data():
+    """Clear server-side data for the current session."""
+    sid = session.get('_sid')
+    if sid and sid in _server_sessions:
+        del _server_sessions[sid]
+
 def quiz_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -115,6 +143,7 @@ def quiz_required(f):
 @app.route('/')
 def index():
     """Quiz selection page."""
+    _clear_server_data()
     session.clear()
     quizzes = get_available_quizzes()
     return render_template('select_quiz.html', quizzes=quizzes)
@@ -122,10 +151,10 @@ def index():
 @app.route('/quiz/<quiz_id>')
 def select_quiz(quiz_id):
     """Start page for a specific quiz."""
-    # Only clear quiz-related session data, not the entire session
-    # This prevents session persistence issues on Windows
-    for key in ['quiz_started', 'quiz_completed', 'questions', 'answers',
-                'current_question', 'result_token', 'review_results']:
+    # Clear quiz-related data
+    _clear_server_data()
+    for key in ['quiz_started', 'quiz_completed', 'answers',
+                'current_question', 'score', 'total']:
         session.pop(key, None)
     session['selected_quiz'] = quiz_id
     quiz_data = load_questions(quiz_id)
@@ -179,10 +208,12 @@ def start_quiz():
             'explanation': q.get('explanation', '')
         })
 
+    # Store large quiz data server-side (exceeds cookie ~4KB limit)
+    _set_server_data('questions', prepared_questions)
+
     session['quiz_started'] = True
     session['quiz_completed'] = False
     session['participant_name'] = participant_name
-    session['questions'] = prepared_questions
     session['current_question'] = 0
     session['answers'] = {}
     session['start_time'] = datetime.now().isoformat()
@@ -196,7 +227,7 @@ def start_quiz():
 @quiz_required
 def quiz():
     current_idx = session.get('current_question', 0)
-    questions = session.get('questions', [])
+    questions = _get_server_data().get('questions', [])
     if current_idx >= len(questions):
         return redirect(url_for('submit'))
     question = questions[current_idx]
@@ -224,7 +255,7 @@ def submit_answer():
 @quiz_required
 def next_question():
     current_idx = session.get('current_question', 0)
-    questions = session.get('questions', [])
+    questions = _get_server_data().get('questions', [])
     if current_idx < len(questions) - 1:
         session['current_question'] = current_idx + 1
         session.modified = True
@@ -254,9 +285,9 @@ def submit():
     if request.method == 'GET':
         return render_template('submit_confirm.html',
                              answered=len(session.get('answers', {})),
-                             total=len(session.get('questions', [])))
+                             total=len(_get_server_data().get('questions', [])))
     try:
-        questions = session.get('questions', [])
+        questions = _get_server_data().get('questions', [])
         answers = session.get('answers', {})
         results = []
         review_results = []
@@ -301,11 +332,13 @@ def submit():
         }
 
         token = encrypt_result(result_data)
+        # Store large data server-side
+        _set_server_data('review_results', review_results)
+        _set_server_data('result_token', token)
+
         session['quiz_completed'] = True
-        session['result_token'] = token
         session['score'] = correct_count
         session['total'] = len(questions)
-        session['review_results'] = review_results
         session.modified = True
         return redirect(url_for('review', q=1))
 
@@ -321,7 +354,7 @@ def review():
     if not session.get('quiz_completed'):
         flash('Please complete the quiz first.', 'warning')
         return redirect(url_for('index'))
-    review_results = session.get('review_results', [])
+    review_results = _get_server_data().get('review_results', [])
     total = len(review_results)
     q = request.args.get('q', 1, type=int)
     q = max(1, min(q, total))
@@ -336,7 +369,7 @@ def result():
         flash('Please complete the quiz first.', 'warning')
         return redirect(url_for('index'))
     return render_template('result.html',
-                         token=session.get('result_token', ''),
+                         token=_get_server_data().get('result_token', ''),
                          score=session.get('score', 0),
                          total=session.get('total', 0),
                          participant=session.get('participant_name', ''))
