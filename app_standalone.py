@@ -122,9 +122,16 @@ def index():
 @app.route('/quiz/<quiz_id>')
 def select_quiz(quiz_id):
     """Start page for a specific quiz."""
-    session.clear()
+    # Only clear quiz-related session data, not the entire session
+    # This prevents session persistence issues on Windows
+    for key in ['quiz_started', 'quiz_completed', 'questions', 'answers',
+                'current_question', 'result_token', 'review_results']:
+        session.pop(key, None)
     session['selected_quiz'] = quiz_id
     quiz_data = load_questions(quiz_id)
+    if not quiz_data.get('questions'):
+        flash('Quiz not found or empty.', 'error')
+        return redirect(url_for('index'))
     return render_template('start.html',
                          quiz_id=quiz_id,
                          quiz_title=quiz_data.get('quiz_title', 'Quiz'),
@@ -135,14 +142,22 @@ def start_quiz():
     participant_name = request.form.get('name', '').strip()
     quiz_id = request.form.get('quiz_id') or session.get('selected_quiz')
 
+    # Validate quiz_id exists
+    if not quiz_id:
+        flash('No quiz selected. Please select a quiz.', 'error')
+        return redirect(url_for('index'))
+
     if not participant_name:
         flash('Please enter your name.', 'error')
-        if quiz_id:
-            return redirect(url_for('select_quiz', quiz_id=quiz_id))
-        return redirect(url_for('index'))
+        return redirect(url_for('select_quiz', quiz_id=quiz_id))
 
     session['selected_quiz'] = quiz_id
     quiz_data = load_questions(quiz_id)
+
+    # Validate quiz has questions
+    if not quiz_data.get('questions'):
+        flash('Quiz not found or has no questions.', 'error')
+        return redirect(url_for('index'))
     questions = quiz_data['questions'].copy()
 
     if Config.SHUFFLE_QUESTIONS:
